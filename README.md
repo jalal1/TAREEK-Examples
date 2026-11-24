@@ -17,34 +17,33 @@ stations (1.0 is a perfect total).
 
 | Region | Date | Main result |
 |--------|------|-------------|
-| [Los Angeles, CA](losangeles-20261006/) | 2026-10-06 | 2 counties (Los Angeles, Orange), 10% sample, 1.70 million agents. sim/obs 0.935, CV 0.491, 35 count stations. Edge stations are too low. ([report](losangeles-20261006/report.html)) |
-| [New York, NY-NJ](newyork-20261006/) | 2026-10-06 | 10 counties, 10% sample, 1.65 million agents. sim/obs 0.827, CV 0.807, 46 count stations. Congested (15% stuck); PATH is missing. ([report](newyork-20261006/report.html)) |
-| [Chicago, IL](chicago-20261003/) | 2026-10-03 | 3 counties (Cook, DuPage, Lake), 20% sample, 1.79 million agents. sim/obs 0.887, CV 0.549, 42 count stations. The afternoon peak is low. ([report](chicago-20261003/report.html)) |
-| [Birmingham, AL, local survey](birmingham-localsurvey-20261001/) | 2026-10-01 | First run with the Birmingham local survey (451 people). sim/obs 0.965, 58 count stations. More tuning is necessary. ([report](birmingham-localsurvey-20261001/report.html)) |
-| [Twin Cities, MN-WI, TBI 2023 survey](twincities-tbi-20260930/) | 2026-09-30 | 15 counties, 15% sample, the TBI 2023 local survey in place of NHTS. sim/obs 0.925, CV 0.277, 96 count stations. ([report](twincities-tbi-20260930/report.html)) |
-| [Twin Cities, MN-WI](twincities-20260928/) | 2026-09-28 | 15 counties, 15% sample, NHTS 2022. sim/obs 0.868, CV 0.276, 94 count stations. ([report](twincities-20260928/report.html)) |
-| [Birmingham, AL](birmingham-20260928/) | 2026-09-28 | 2 counties (Jefferson, Shelby), 25% sample, NHTS 2022. sim/obs 0.912, CV 0.717, 53 count stations. ([report](birmingham-20260928/report.html)) |
-| [Madison, WI](madison-20260928/) | 2026-09-28 | Dane County, 25% sample, NHTS 2022. sim/obs 0.813, CV 0.148, only 10 count stations. ([report](madison-20260928/report.html)) |
+| [Los Angeles, CA](losangeles-20261006/) | 2026-10-06 | 2 counties (Los Angeles, Orange), 10% sample, 1.70 million agents. sim/obs 0.935, CV 0.491, 35 count stations. Edge stations are too low. ([report](https://jalal1.github.io/TAREEK-examples/losangeles-20261006/report.html)) |
+| [New York, NY-NJ](newyork-20261006/) | 2026-10-06 | 10 counties, 10% sample, 1.65 million agents. sim/obs 0.827, CV 0.807, 46 count stations. Congested (15% stuck); PATH is missing. ([report](https://jalal1.github.io/TAREEK-examples/newyork-20261006/report.html)) |
+| [Chicago, IL](chicago-20261003/) | 2026-10-03 | 3 counties (Cook, DuPage, Lake), 20% sample, 1.79 million agents. sim/obs 0.887, CV 0.549, 42 count stations. The afternoon peak is low. ([report](https://jalal1.github.io/TAREEK-examples/chicago-20261003/report.html)) |
+| [Birmingham, AL, local survey](birmingham-localsurvey-20261001/) | 2026-10-01 | First run with the Birmingham local survey (451 people). sim/obs 0.965, 58 count stations. More tuning is necessary. ([report](https://jalal1.github.io/TAREEK-examples/birmingham-localsurvey-20261001/report.html)) |
+| [Twin Cities, MN-WI, TBI 2023 survey](twincities-tbi-20260930/) | 2026-09-30 | 15 counties, 15% sample, the TBI 2023 local survey in place of NHTS. sim/obs 0.925, CV 0.277, 96 count stations. ([report](https://jalal1.github.io/TAREEK-examples/twincities-tbi-20260930/report.html)) |
+| [Twin Cities, MN-WI](twincities-20260928/) | 2026-09-28 | 15 counties, 15% sample, NHTS 2022. sim/obs 0.868, CV 0.276, 94 count stations. ([report](https://jalal1.github.io/TAREEK-examples/twincities-20260928/report.html)) |
+| [Birmingham, AL](birmingham-20260928/) | 2026-09-28 | 2 counties (Jefferson, Shelby), 25% sample, NHTS 2022. sim/obs 0.912, CV 0.717, 53 count stations. ([report](https://jalal1.github.io/TAREEK-examples/birmingham-20260928/report.html)) |
+| [Madison, WI](madison-20260928/) | 2026-09-28 | Dane County, 25% sample, NHTS 2022. sim/obs 0.813, CV 0.148, only 10 count stations. ([report](https://jalal1.github.io/TAREEK-examples/madison-20260928/report.html)) |
 
 All runs use 10 MATSim iterations, the Hermes mobsim, person-first demand and freight.
 The README of each example gives the settings and the full results.
 
 ## How to open a report
 
-GitHub does not show HTML pages. To see a `report.html`:
+Click **report** in the table above. The reports are on GitHub Pages
+(`https://jalal1.github.io/TAREEK-examples/<example>/report.html`).
 
-1. Clone this repository:
+To open a report offline, clone this repository:
 
-   ```bash
-   git clone --depth 1 https://github.com/jalal1/TAREEK-examples.git
-   ```
+```bash
+git clone --depth 1 https://github.com/jalal1/TAREEK-examples.git
+```
 
-   Or, on the GitHub page, click **Code → Download ZIP** and extract it.
-2. Open `<example>/report.html` in a web browser.
-
-The report loads its images from the `evaluation/` folder next to it. If you copy a
-report to a different location, copy its `evaluation/` folder with it. If you download only
-`report.html`, the report shows no images.
+Or, on the GitHub page, click **Code → Download ZIP** and extract it. Then open
+`<example>/report.html` in a web browser. The report loads its images from the `evaluation/`
+folder next to it. If you copy a report to a different location, copy its `evaluation/` folder
+with it. If you download only `report.html`, the report shows no images.
 
 ## Folder contents
 

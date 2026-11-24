@@ -15,11 +15,11 @@ way as the [Twin Cities example](../twincities-20260928/).
 
 ## Full report
 
-**[`report.html`](report.html)** is the complete experiment report: the verdict, the
+**[`report.html`](https://jalal1.github.io/TAREEK-examples/birmingham-20260928/report.html)** is the complete experiment report: the verdict, the
 demand check against the household survey, the count validation, freight, and all the
 evaluation figures. It loads its images from the `evaluation/` folder next to it.
 
-> **How to open it:** GitHub does not show HTML pages. Clone
+> **How to open it:** [view the report online](https://jalal1.github.io/TAREEK-examples/birmingham-20260928/report.html). To view it offline, clone
 > [TAREEK-examples](https://github.com/jalal1/TAREEK-examples) (or download it as a ZIP file) and open
 > `birmingham-20260928/report.html` in a web browser. Keep the `evaluation/` folder next to
 > `report.html`, because the report loads its images from it.
@@ -207,7 +207,7 @@ truck volume. HPMS gives a truck share of 16.3% on the urban interstates of Alab
 | Sim/obs ratio per station, sorted | Signed relative error per hour, all stations |
 
 More figures are in [`evaluation/`](evaluation/). The full set, with captions, is in
-[`report.html`](report.html).
+[`report.html`](https://jalal1.github.io/TAREEK-examples/birmingham-20260928/report.html).
 
 Data: [`evaluation/volume_comparison.csv`](evaluation/volume_comparison.csv) (per hour,
 per station) · [`evaluation/trip_timing_check.json`](evaluation/trip_timing_check.json)

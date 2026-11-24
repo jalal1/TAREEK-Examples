@@ -17,11 +17,11 @@ examples. It is the first Chicago example and the largest example run to date.
 
 ## Full report
 
-**[`report.html`](report.html)** is the complete experiment report: the verdict, the
+**[`report.html`](https://jalal1.github.io/TAREEK-examples/chicago-20261003/report.html)** is the complete experiment report: the verdict, the
 demand check against the household survey, the count validation, freight, and all the
 evaluation figures. It loads its images from the `evaluation/` folder next to it.
 
-> **How to open it:** GitHub does not show HTML pages. Clone
+> **How to open it:** [view the report online](https://jalal1.github.io/TAREEK-examples/chicago-20261003/report.html). To view it offline, clone
 > [TAREEK-examples](https://github.com/jalal1/TAREEK-examples) (or download it as a ZIP file) and open
 > `chicago-20261003/report.html` in a web browser. Keep the `evaluation/` folder next to
 > `report.html`, because the report loads its images from it.
@@ -224,7 +224,7 @@ the earlier, more congested iterations are in them too.
 | Sim/obs ratio per station, sorted | Signed relative error per hour, all stations |
 
 More figures are in [`evaluation/`](evaluation/). The full set, with captions, is in
-[`report.html`](report.html).
+[`report.html`](https://jalal1.github.io/TAREEK-examples/chicago-20261003/report.html).
 
 Data: [`evaluation/volume_comparison.csv`](evaluation/volume_comparison.csv) (per hour,
 per station) · [`evaluation/trip_timing_check.json`](evaluation/trip_timing_check.json)
