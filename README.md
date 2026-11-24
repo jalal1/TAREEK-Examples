@@ -12,6 +12,9 @@ example (`README.md`, `config_used.json` and `config.xml`), which stays in TAREE
 
 ## Examples
 
+**[Map of the examples](https://jalal1.github.io/TAREEK-examples/)**: a pin for each region,
+with the results of each run and a link to its report.
+
 "sim/obs" is the total simulated count divided by the total observed count at the count
 stations (1.0 is a perfect total).
 

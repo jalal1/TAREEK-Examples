@@ -39,6 +39,15 @@ You can share a completed [TAREEK](https://github.com/jalal1/TAREEK) run here.
 
 6. **Add a row** to the table in [README.md](README.md).
 
+   You do not add your example to the [map](https://jalal1.github.io/TAREEK-examples/):
+   it is made from the example folders each time `main` changes. The pin is placed at the
+   counties in `region.counties` of `config_used.json`, and its results come from
+   `experiment_summary.json`. The region name is the part of the README title before
+   ` experiment` or ` — `. Use the same region name as an existing example of the same area,
+   so that both runs share one pin. To see the map before you open the pull request, run
+   `python site/build.py _site` and open `_site/index.html` with a local web server
+   (`python -m http.server --directory _site`).
+
 7. **Open a pull request** against `main`. We will examine it and merge it.
 
 ## Show your example in the TAREEK web app

@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TAREEK examples</title>
+<meta name="description" content="Complete TAREEK runs for real US regions: configuration, experiment report and count validation for each run.">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<style>
+  :root {
+    --bg: #f6f6f3;
+    --surface: #ffffff;
+    --text: #1d1f21;
+    --muted: #5e6469;
+    --border: #dcdcd6;
+    --accent: #1f6f8b;
+    --accent-text: #ffffff;
+    --good: #2e7d32;
+    --warn: #a15c00;
+    --bad: #b3261e;
+    --shadow: 0 1px 3px rgba(0,0,0,.12);
+    --tiles: grayscale(.7) contrast(.95) brightness(1.02);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #15171a;
+      --surface: #1f2226;
+      --text: #e7e8e9;
+      --muted: #a2a8ae;
+      --border: #33383e;
+      --accent: #5fb3d1;
+      --accent-text: #0d1b21;
+      --good: #7cc47f;
+      --warn: #e0a54a;
+      --bad: #f08a80;
+      --shadow: 0 1px 3px rgba(0,0,0,.5);
+      --tiles: grayscale(.8) invert(.9) hue-rotate(180deg) brightness(.95) contrast(.9);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #15171a; --surface: #1f2226; --text: #e7e8e9; --muted: #a2a8ae; --border: #33383e;
+    --accent: #5fb3d1; --accent-text: #0d1b21; --good: #7cc47f; --warn: #e0a54a; --bad: #f08a80;
+    --shadow: 0 1px 3px rgba(0,0,0,.5);
+    --tiles: grayscale(.8) invert(.9) hue-rotate(180deg) brightness(.95) contrast(.9);
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font: 15px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    display: grid;
+    grid-template-rows: auto 1fr;
+  }
+  a { color: var(--accent); }
+
+  header {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px;
+    padding: 12px 16px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  header h1 { margin: 0; font-size: 18px; }
+  header p { margin: 0; color: var(--muted); flex: 1 1 320px; }
+  header nav { display: flex; gap: 14px; font-size: 14px; }
+
+  main { display: grid; grid-template-columns: 1fr 380px; min-height: 0; }
+  #map { min-height: 0; background: var(--bg); }
+  #map .leaflet-tile-pane { filter: var(--tiles); }
+
+  aside {
+    overflow-y: auto;
+    border-left: 1px solid var(--border);
+    background: var(--bg);
+    padding: 12px;
+  }
+  aside h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 4px 4px 10px; }
+  .legend { font-size: 13px; color: var(--muted); margin: 14px 4px 4px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+  }
+  .card.selected { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .card h3 { margin: 0; font-size: 15px; }
+  .card h3 button {
+    all: unset; cursor: pointer; color: var(--text);
+  }
+  .card h3 button:hover, .card h3 button:focus-visible { color: var(--accent); text-decoration: underline; }
+  .card .summary { margin: 6px 0 0; font-size: 13px; color: var(--muted); }
+
+  .exp-sub { font-size: 13px; color: var(--muted); }
+  .metrics { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; font-size: 13px; font-variant-numeric: tabular-nums; }
+  .metrics b { font-weight: 600; }
+  .ratio-good { color: var(--good); } .ratio-warn { color: var(--warn); } .ratio-bad { color: var(--bad); }
+  .links { display: flex; gap: 12px; margin-top: 8px; font-size: 14px; }
+  .links a.primary {
+    background: var(--accent); color: var(--accent-text); text-decoration: none;
+    padding: 3px 10px; border-radius: 5px; font-weight: 600;
+  }
+
+  /* Pins: a dot with the number of experiments in the region. */
+  .pin {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--accent); color: var(--accent-text);
+    border: 2px solid var(--surface);
+    box-shadow: 0 1px 4px rgba(0,0,0,.4);
+    display: grid; place-items: center;
+    font: 700 13px/1 system-ui, sans-serif;
+  }
+  .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--surface); color: var(--text); }
+  .leaflet-popup-content { margin: 12px 14px; min-width: 240px; font: inherit; font-size: 14px; }
+  .leaflet-container a.leaflet-popup-close-button { color: var(--muted); }
+  .popup h3 { margin: 0 0 6px; font-size: 16px; }
+  .popup .exp + .exp { border-top: 1px solid var(--border); margin-top: 10px; padding-top: 10px; }
+  .popup .exp-title { font-weight: 600; }
+  .leaflet-container { font: inherit; }
+  .leaflet-control-attribution { font-size: 11px; }
+  .leaflet-bar a { background: var(--surface); color: var(--text); border-color: var(--border); }
+
+  @media (max-width: 800px) {
+    body { display: block; height: auto; }
+    main { display: block; }
+    #map { height: 60vh; }
+    aside { border-left: 0; border-top: 1px solid var(--border); overflow: visible; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>TAREEK examples</h1>
+  <p>Complete <a href="https://github.com/jalal1/TAREEK">TAREEK</a> runs for real US regions. Click a pin to see the runs in that region and open their reports.</p>
+  <nav><a id="repoLink" href="https://github.com/jalal1/TAREEK-examples">GitHub repository</a></nav>
+</header>
+<main>
+  <div id="map" role="region" aria-label="Map of the example regions"></div>
+  <aside>
+    <h2>All runs, newest first</h2>
+    <div id="list"></div>
+    <p class="legend"><b>sim/obs</b>: total simulated count ÷ total observed count at the count stations (1.0 is a perfect total).
+      <b>CV</b>: spread of the per-station ratios (lower is better).</p>
+  </aside>
+</main>
+
+<script id="examples-data" type="application/json">/*EXAMPLES_JSON*/{}</script>
+<script>
+(function () {
+  'use strict';
+  const data = JSON.parse(document.getElementById('examples-data').textContent);
+  const examples = data.examples || [];
+
+  function el(tag, attrs, ...children) {
+    const node = document.createElement(tag);
+    for (const [key, value] of Object.entries(attrs || {})) {
+      if (key === 'class') node.className = value; else node.setAttribute(key, value);
+    }
+    for (const child of children) if (child != null) node.append(child);
+    return node;
+  }
+
+  function ratioClass(r) {
+    const off = Math.abs(r - 1);
+    return off <= 0.1 ? 'ratio-good' : off <= 0.2 ? 'ratio-warn' : 'ratio-bad';
+  }
+
+  function subtitle(e, withSurvey) {
+    const parts = withSurvey ? [/survey$/i.test(e.survey) ? e.survey : `${e.survey} survey`] : [];
+    if (e.counties) parts.push(`${e.counties} ${e.counties === 1 ? 'county' : 'counties'}`);
+    if (e.sample) parts.push(`${Math.round(e.sample * 100)}% sample`);
+    if (e.freight) parts.push('freight');
+    return parts.join(' · ');
+  }
+
+  function metrics(e) {
+    const r = e.results || {};
+    const box = el('div', {class: 'metrics'});
+    if (r.sim_obs != null) box.append(el('span', null, 'sim/obs ', el('b', {class: ratioClass(r.sim_obs)}, r.sim_obs.toFixed(3))));
+    if (r.cv != null) box.append(el('span', null, 'CV ', el('b', null, r.cv.toFixed(3))));
+    if (r.stations != null) box.append(el('span', null, el('b', null, String(r.stations)), ' count stations'));
+    return box.childElementCount ? box : null;
+  }
+
+  function links(e) {
+    return el('div', {class: 'links'},
+      e.report ? el('a', {class: 'primary', href: e.report}, 'Report') : null,
+      el('a', {href: e.readme}, 'README and files'));
+  }
+
+  // Map. Regions with the same name share one pin (as in the TAREEK web app).
+  const map = L.map('map', {minZoom: 3, maxZoom: 12, worldCopyJump: true});
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+
+  const regions = new Map();
+  for (const e of examples) {
+    if (!e.location) continue;
+    if (!regions.has(e.region)) regions.set(e.region, []);
+    regions.get(e.region).push(e);
+  }
+
+  const markers = new Map();
+  for (const [region, runs] of regions) {
+    const popup = el('div', {class: 'popup'}, el('h3', null, region));
+    for (const e of runs) {
+      popup.append(el('div', {class: 'exp'},
+        el('div', {class: 'exp-title'}, `${e.survey} · ${e.date || ''}`),
+        el('div', {class: 'exp-sub'}, subtitle(e)),
+        metrics(e),
+        links(e)));
+    }
+    const icon = L.divIcon({className: '', html: `<div class="pin">${runs.length}</div>`,
+                            iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -14]});
+    const {lat, lng} = runs[0].location;
+    const marker = L.marker([lat, lng], {icon, title: `${region}: ${runs.length} ${runs.length === 1 ? 'run' : 'runs'}`, riseOnHover: true})
+      .bindPopup(popup, {maxWidth: 340, autoPanPadding: [20, 20]})
+      .addTo(map);
+    marker.on('popupopen', () => highlight(region));
+    marker.on('popupclose', () => highlight(null));
+    markers.set(region, marker);
+  }
+
+  const latLngs = [...markers.values()].map(m => m.getLatLng());
+  if (latLngs.length > 1) map.fitBounds(L.latLngBounds(latLngs), {padding: [50, 50], maxZoom: 7});
+  else if (latLngs.length === 1) map.setView(latLngs[0], 7);
+  else map.setView([39.8, -98.5], 4);
+
+  // Side list: one card per run.
+  const list = document.getElementById('list');
+  const cards = [];
+  for (const e of examples) {
+    const heading = e.location
+      ? el('button', {type: 'button', title: 'Show on the map'}, e.region)
+      : e.region;
+    if (e.location) heading.addEventListener('click', () => {
+      const marker = markers.get(e.region);
+      map.flyTo(marker.getLatLng(), Math.max(map.getZoom(), 7), {duration: 0.6});
+      marker.openPopup();
+      if (window.matchMedia('(max-width: 800px)').matches) document.getElementById('map').scrollIntoView({behavior: 'smooth'});
+    });
+    const card = el('article', {class: 'card'},
+      el('h3', null, heading),
+      el('div', {class: 'exp-sub'}, `${e.date || ''} · ${subtitle(e, true)}`),
+      metrics(e),
+      e.summary ? el('p', {class: 'summary'}, e.summary) : null,
+      links(e));
+    card.dataset.region = e.region;
+    cards.push(card);
+    list.append(card);
+  }
+
+  // index.html#<example-id> opens the pin of that example (a link to share).
+  function openFromHash() {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const e = examples.find(x => x.id === id);
+    const marker = e && markers.get(e.region);
+    if (marker) { map.setView(marker.getLatLng(), Math.max(map.getZoom(), 6)); marker.openPopup(); }
+  }
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+
+  function highlight(region) {
+    for (const card of cards) card.classList.toggle('selected', card.dataset.region === region);
+    const first = cards.find(c => c.dataset.region === region);
+    if (first && !window.matchMedia('(max-width: 800px)').matches) first.scrollIntoView({block: 'nearest', behavior: 'smooth'});
+  }
+})();
+</script>
+</body>
+</html>

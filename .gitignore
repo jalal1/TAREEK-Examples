@@ -19,3 +19,6 @@ desktop.ini
 # Secrets
 .env
 *.key
+
+# Built GitHub Pages site (python site/build.py _site)
+_site/
