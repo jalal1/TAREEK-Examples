@@ -1,0 +1,21 @@
+# Operating system and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# Large MATSim outputs and inputs. Do not commit them (see CONTRIBUTING.md).
+*.xml.gz
+*.csv.gz
+*.pbf
+*.osm
+*.zip
+**/matsim_output/ITERS/
+**/matsim_output/*events*
+**/matsim_output/*plans*
+**/matsim_output/*network*
+
+# Secrets
+.env
+*.key
