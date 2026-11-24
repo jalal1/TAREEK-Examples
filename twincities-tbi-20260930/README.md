@@ -26,12 +26,12 @@ that path for the Twin Cities.
 
 ## Full report
 
-**[`report.html`](https://jalal1.github.io/TAREEK-examples/twincities-tbi-20260930/report.html)** is the complete experiment report: the verdict, the
+**[`report.html`](https://jalal1.github.io/TAREEK-Examples/twincities-tbi-20260930/report.html)** is the complete experiment report: the verdict, the
 demand check against the TBI survey, the demand budget, the count validation, freight, and
 all the evaluation figures. It loads its images from the `evaluation/` folder next to it.
 
-> **How to open it:** [view the report online](https://jalal1.github.io/TAREEK-examples/twincities-tbi-20260930/report.html). To view it offline, clone
-> [TAREEK-examples](https://github.com/jalal1/TAREEK-examples) (or download it as a ZIP file) and open
+> **How to open it:** [view the report online](https://jalal1.github.io/TAREEK-Examples/twincities-tbi-20260930/report.html). To view it offline, clone
+> [TAREEK-Examples](https://github.com/jalal1/TAREEK-Examples) (or download it as a ZIP file) and open
 > `twincities-tbi-20260930/report.html` in a web browser. Keep the `evaluation/` folder next to
 > `report.html`, because the report loads its images from it.
 
@@ -274,7 +274,7 @@ for the notes on the freight level.
 | Sim/obs ratio per station, sorted | Signed relative error per hour, all stations |
 
 More figures are in [`evaluation/`](evaluation/). The full set, with captions, is in
-[`report.html`](https://jalal1.github.io/TAREEK-examples/twincities-tbi-20260930/report.html).
+[`report.html`](https://jalal1.github.io/TAREEK-Examples/twincities-tbi-20260930/report.html).
 
 Data: [`evaluation/volume_comparison.csv`](evaluation/volume_comparison.csv) (per hour,
 per station) · [`evaluation/trip_timing_check.json`](evaluation/trip_timing_check.json)

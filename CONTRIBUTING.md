@@ -45,7 +45,7 @@ You can share a completed [TAREEK](https://github.com/jalal1/TAREEK) run here.
 
 6. **Add a row** to the table in [README.md](README.md).
 
-   You do not add your example to the [map](https://jalal1.github.io/TAREEK-examples/):
+   You do not add your example to the [map](https://jalal1.github.io/TAREEK-Examples/):
    it is made from the example folders each time `main` changes. The pin is placed at the
    counties in `region.counties` of `config_used.json`, and its results come from
    `experiment_summary.json`. The region name is the part of the README title before
@@ -65,7 +65,7 @@ request in [TAREEK](https://github.com/jalal1/TAREEK) that adds
 README, before the title:
 
 ```markdown
-> Full results: [TAREEK-examples/<your-folder>](https://github.com/jalal1/TAREEK-examples/tree/main/<your-folder>)
+> Full results: [TAREEK-Examples/<your-folder>](https://github.com/jalal1/TAREEK-Examples/tree/main/<your-folder>)
 ```
 
 ## License of your contribution

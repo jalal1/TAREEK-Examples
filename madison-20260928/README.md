@@ -20,12 +20,12 @@ the [Twin Cities example](../twincities-20260928/).
 
 ## Full report
 
-**[`report.html`](https://jalal1.github.io/TAREEK-examples/madison-20260928/report.html)** is the complete experiment report: the verdict, the
+**[`report.html`](https://jalal1.github.io/TAREEK-Examples/madison-20260928/report.html)** is the complete experiment report: the verdict, the
 demand check against the household survey, the count validation, freight, and all the
 evaluation figures. It loads its images from the `evaluation/` folder next to it.
 
-> **How to open it:** [view the report online](https://jalal1.github.io/TAREEK-examples/madison-20260928/report.html). To view it offline, clone
-> [TAREEK-examples](https://github.com/jalal1/TAREEK-examples) (or download it as a ZIP file) and open
+> **How to open it:** [view the report online](https://jalal1.github.io/TAREEK-Examples/madison-20260928/report.html). To view it offline, clone
+> [TAREEK-Examples](https://github.com/jalal1/TAREEK-Examples) (or download it as a ZIP file) and open
 > `madison-20260928/report.html` in a web browser. Keep the `evaluation/` folder next to
 > `report.html`, because the report loads its images from it.
 
@@ -235,7 +235,7 @@ truck volume; the others are weighted by road capacity.
 | Sim/obs ratio per station, sorted | Signed relative error per hour, all stations |
 
 More figures are in [`evaluation/`](evaluation/). The full set, with captions, is in
-[`report.html`](https://jalal1.github.io/TAREEK-examples/madison-20260928/report.html).
+[`report.html`](https://jalal1.github.io/TAREEK-Examples/madison-20260928/report.html).
 
 Data: [`evaluation/volume_comparison.csv`](evaluation/volume_comparison.csv) (per hour,
 per station) · [`evaluation/trip_timing_check.json`](evaluation/trip_timing_check.json)

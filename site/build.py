@@ -25,8 +25,8 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 SITE = Path(__file__).resolve().parent
-PAGES = "https://jalal1.github.io/TAREEK-examples"
-GITHUB = "https://github.com/jalal1/TAREEK-examples"
+PAGES = "https://jalal1.github.io/TAREEK-Examples"
+GITHUB = "https://github.com/jalal1/TAREEK-Examples"
 
 SURVEY_LABELS = {"nhts": "NHTS", "tbi": "TBI", "bham_local": "Local survey"}
 

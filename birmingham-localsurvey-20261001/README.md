@@ -24,12 +24,12 @@ say which jobs it does (see [Survey roles](#survey-roles)).
 
 ## Full report
 
-**[`report.html`](https://jalal1.github.io/TAREEK-examples/birmingham-localsurvey-20261001/report.html)** is the complete experiment report: the verdict, the demand
+**[`report.html`](https://jalal1.github.io/TAREEK-Examples/birmingham-localsurvey-20261001/report.html)** is the complete experiment report: the verdict, the demand
 check against the local survey, the demand budget, the count validation, freight, and all the
 evaluation figures. It loads its images from the `evaluation/` folder next to it.
 
-> **How to open it:** [view the report online](https://jalal1.github.io/TAREEK-examples/birmingham-localsurvey-20261001/report.html). To view it offline, clone
-> [TAREEK-examples](https://github.com/jalal1/TAREEK-examples) (or download it as a ZIP file) and open
+> **How to open it:** [view the report online](https://jalal1.github.io/TAREEK-Examples/birmingham-localsurvey-20261001/report.html). To view it offline, clone
+> [TAREEK-Examples](https://github.com/jalal1/TAREEK-Examples) (or download it as a ZIP file) and open
 > `birmingham-localsurvey-20261001/report.html` in a web browser. Keep the `evaluation/` folder next to
 > `report.html`, because the report loads its images from it.
 
@@ -280,7 +280,7 @@ puts more cars on the road at night.
 
 More figures are in [`evaluation/`](evaluation/): the 8 am and 5 pm highway heatmaps, the
 count error maps at 07 h and 17 h, the activity durations, and the trip durations per hour.
-The full set, with captions, is in [`report.html`](https://jalal1.github.io/TAREEK-examples/birmingham-localsurvey-20261001/report.html).
+The full set, with captions, is in [`report.html`](https://jalal1.github.io/TAREEK-Examples/birmingham-localsurvey-20261001/report.html).
 
 Data: [`evaluation/volume_comparison.csv`](evaluation/volume_comparison.csv) (per hour,
 per station) · [`evaluation/trip_timing_check.json`](evaluation/trip_timing_check.json)

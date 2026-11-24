@@ -20,12 +20,12 @@ examples. It is the first Los Angeles example.
 
 ## Full report
 
-**[`report.html`](https://jalal1.github.io/TAREEK-examples/losangeles-20261006/report.html)** is the complete experiment report: the verdict, the
+**[`report.html`](https://jalal1.github.io/TAREEK-Examples/losangeles-20261006/report.html)** is the complete experiment report: the verdict, the
 demand check against the household survey, the count validation, freight, and all the
 evaluation figures. It loads its images from the `evaluation/` folder next to it.
 
-> **How to open it:** [view the report online](https://jalal1.github.io/TAREEK-examples/losangeles-20261006/report.html). To view it offline, clone
-> [TAREEK-examples](https://github.com/jalal1/TAREEK-examples) (or download it as a ZIP file) and open
+> **How to open it:** [view the report online](https://jalal1.github.io/TAREEK-Examples/losangeles-20261006/report.html). To view it offline, clone
+> [TAREEK-Examples](https://github.com/jalal1/TAREEK-Examples) (or download it as a ZIP file) and open
 > `losangeles-20261006/report.html` in a web browser. Keep the `evaluation/` folder next to
 > `report.html`, because the report loads its images from it.
 
@@ -254,7 +254,7 @@ stations in the core are too high:
 | Core, too high | I-405 at Sepulveda (1.23, 1.36) · US-101 Hollywood Fwy (1.26) · Arroyo Seco Pkwy (1.61) · I-210 at Pasadena (1.45, 1.95) · I-405 at Long Beach (1.48, 1.58) |
 
 More figures are in [`evaluation/`](evaluation/). The full set, with captions, is in
-[`report.html`](https://jalal1.github.io/TAREEK-examples/losangeles-20261006/report.html).
+[`report.html`](https://jalal1.github.io/TAREEK-Examples/losangeles-20261006/report.html).
 
 Data: [`evaluation/volume_comparison.csv`](evaluation/volume_comparison.csv) (per hour,
 per station) · [`evaluation/trip_timing_check.json`](evaluation/trip_timing_check.json)
