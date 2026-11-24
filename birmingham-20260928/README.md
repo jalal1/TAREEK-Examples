@@ -54,6 +54,28 @@ Hermes made MATSim about 2 times faster: 38 min for 306,285 agents, against 81 m
 
 ---
 
+## MATSim output (for TAREEK-Vis)
+
+The MATSim output of this run is on Hugging Face, in
+[`tareek-examples-matsim/birmingham-20260928`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/tree/main/birmingham-20260928). To play the simulation, download the
+files into one folder and open that folder in [TAREEK-Vis](https://github.com/jalal1/TAREEK-Vis).
+TAREEK-Vis reads the `.gz` files directly; do not unzip them.
+
+| File | Size | Contents |
+|------|------|----------|
+| [`output_events.xml.gz`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/birmingham-20260928/output_events.xml.gz?download=true) | 1.2 GB | MATSim events of the last iteration |
+| [`output_network.xml.gz`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/birmingham-20260928/output_network.xml.gz?download=true) | 6.8 MB | Road and transit network |
+| [`output_transitSchedule.xml.gz`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/birmingham-20260928/output_transitSchedule.xml.gz?download=true) | 196 KB | Transit schedule |
+| [`output_config.xml`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/birmingham-20260928/output_config.xml?download=true) | 46 KB | Full MATSim configuration |
+| [`counts.xml`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/birmingham-20260928/counts.xml?download=true) | 48 KB | Traffic counts used for the count validation |
+
+To download all the files of this run in one step:
+
+```bash
+pip install -U huggingface_hub
+hf download Jalalk1/tareek-examples-matsim --repo-type dataset --include "birmingham-20260928/*" --local-dir tareek-examples-matsim
+```
+
 ## How to reproduce
 
 This run used [`config_used.json`](config_used.json). The same values are in

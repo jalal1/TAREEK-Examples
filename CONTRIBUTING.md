@@ -33,6 +33,12 @@ You can share a completed [TAREEK](https://github.com/jalal1/TAREEK) run here.
    > with a placeholder such as `YOUR_CENSUS_API_KEY_HERE` before you commit. In your
    > README, list the services that a user needs a key for. Never commit a live key.
 
+   The large MATSim output (events, network, transit schedule) does not go in this
+   repository. To share it for [TAREEK-Vis](https://github.com/jalal1/TAREEK-Vis), put it in
+   a Hugging Face dataset folder and add a `## MATSim output (for TAREEK-Vis)` section to your
+   README with a link to that folder (`https://huggingface.co/datasets/<user>/<name>/tree/main/<folder>`).
+   The map then shows a **MATSim files** link for your example. See an existing example.
+
 5. **Give the data sources.** In your README, give the source and the license of each
    input dataset (for example, OpenStreetMap data is ODbL). Make sure that you have the
    right to share the data.

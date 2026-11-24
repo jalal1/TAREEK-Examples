@@ -58,6 +58,32 @@ the new plans divided by the old. Person-first demand with neutral knobs gave 0.
 
 ---
 
+## MATSim output (for TAREEK-Vis)
+
+The MATSim output of this run is on Hugging Face, in
+[`tareek-examples-matsim/madison-20260928`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/tree/main/madison-20260928). To play the simulation, download the
+files into one folder and open that folder in [TAREEK-Vis](https://github.com/jalal1/TAREEK-Vis).
+TAREEK-Vis reads the `.gz` files directly; do not unzip them.
+
+| File | Size | Contents |
+|------|------|----------|
+| [`output_events.xml.gz`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/madison-20260928/output_events.xml.gz?download=true) | 499.7 MB | MATSim events of the last iteration |
+| [`output_network.xml.gz`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/madison-20260928/output_network.xml.gz?download=true) | 3.0 MB | Road and transit network |
+| [`output_transitSchedule.xml.gz`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/madison-20260928/output_transitSchedule.xml.gz?download=true) | 559 KB | Transit schedule |
+| [`output_config.xml`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/madison-20260928/output_config.xml?download=true) | 46 KB | Full MATSim configuration |
+| [`counts.xml`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/madison-20260928/counts.xml?download=true) | 9 KB | Traffic counts used for the count validation |
+
+To download all the files of this run in one step:
+
+```bash
+pip install -U huggingface_hub
+hf download Jalalk1/tareek-examples-matsim --repo-type dataset --include "madison-20260928/*" --local-dir tareek-examples-matsim
+```
+
+The same files are also in one zip file:
+[`tareek-vis-sample-madison.zip`](https://huggingface.co/datasets/Jalalk1/tareek-vis-sample-madison)
+(500 MB). The TAREEK-Vis getting-started guide uses it.
+
 ## How to reproduce
 
 This run used [`config_used.json`](config_used.json). To run it again, copy the config
@@ -81,12 +107,6 @@ Output goes to `experiments/<experiment-id>/`. The large files (`network.xml`,
 `plans.xml`, the MATSim `output/` folder) are **not** in this folder. The run above
 makes them again from the config. The first freight run downloads the HPMS road data
 for the region; later runs use the cache in `data/hpms`.
-
-To see the output of this run without running it, download
-[`tareek-vis-sample-madison.zip`](https://huggingface.co/datasets/Jalalk1/tareek-vis-sample-madison)
-(500 MB) from Hugging Face. It has the MATSim network, events and transit schedule of
-this run, and the counts. Open the unzipped folder in
-[TAREEK-Vis](https://github.com/jalal1/TAREEK-Vis) to play the simulation.
 
 For the setup steps, see the **[project README](https://github.com/jalal1/TAREEK/blob/main/README.md#quick-start)**. The API
 keys in the config are **optional** — see [Optional API keys](#optional-api-keys).

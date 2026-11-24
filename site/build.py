@@ -107,6 +107,14 @@ def example(folder, points):
     except (OSError, ValueError):
         warn(f"{folder.name}: no readable experiment_summary.json, so the map shows no results")
 
+    # MATSim output for TAREEK-Vis: the first Hugging Face dataset folder link
+    # (…/datasets/<user>/<name>/tree/<revision>/<folder>) in the README.
+    try:
+        readme = (folder / "README.md").read_text(encoding="utf-8")
+    except OSError:
+        readme = ""
+    matsim = re.search(r"https://huggingface\.co/datasets/[\w.-]+/[\w.-]+/tree/[^\s)\"'>]+", readme)
+
     has_report = (folder / "report.html").is_file()
     if not has_report:
         warn(f"{folder.name}: no report.html")
@@ -124,6 +132,7 @@ def example(folder, points):
         "location": {"lat": location[0], "lng": location[1]} if location else None,
         "report": f"{folder.name}/report.html" if has_report else None,
         "readme": f"{GITHUB}/tree/main/{folder.name}",
+        "matsim": matsim[0] if matsim else None,
     }
 
 

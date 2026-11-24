@@ -60,6 +60,28 @@ python scripts/experiment_report.py experiments/<experiment-id> --no-pdf --link-
 
 ---
 
+## MATSim output (for TAREEK-Vis)
+
+The MATSim output of this run is on Hugging Face, in
+[`tareek-examples-matsim/losangeles-20261006`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/tree/main/losangeles-20261006). To play the simulation, download the
+files into one folder and open that folder in [TAREEK-Vis](https://github.com/jalal1/TAREEK-Vis).
+TAREEK-Vis reads the `.gz` files directly; do not unzip them.
+
+| File | Size | Contents |
+|------|------|----------|
+| [`output_events.xml.gz`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/losangeles-20261006/output_events.xml.gz?download=true) | 9.9 GB | MATSim events of the last iteration |
+| [`output_network.xml.gz`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/losangeles-20261006/output_network.xml.gz?download=true) | 41.4 MB | Road and transit network |
+| [`output_transitSchedule.xml.gz`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/losangeles-20261006/output_transitSchedule.xml.gz?download=true) | 20.7 MB | Transit schedule |
+| [`output_config.xml`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/losangeles-20261006/output_config.xml?download=true) | 46 KB | Full MATSim configuration |
+| [`counts.xml`](https://huggingface.co/datasets/Jalalk1/tareek-examples-matsim/resolve/main/losangeles-20261006/counts.xml?download=true) | 32 KB | Traffic counts used for the count validation |
+
+To download all the files of this run in one step:
+
+```bash
+pip install -U huggingface_hub
+hf download Jalalk1/tareek-examples-matsim --repo-type dataset --include "losangeles-20261006/*" --local-dir tareek-examples-matsim
+```
+
 ## How to reproduce
 
 This run used [`config_used.json`](config_used.json). To run it again, copy the config

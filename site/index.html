@@ -194,7 +194,8 @@
   function links(e) {
     return el('div', {class: 'links'},
       e.report ? el('a', {class: 'primary', href: e.report}, 'Report') : null,
-      el('a', {href: e.readme}, 'README and files'));
+      el('a', {href: e.readme}, 'README'),
+      e.matsim ? el('a', {href: e.matsim, title: 'MATSim output for TAREEK-Vis (Hugging Face)'}, 'MATSim files') : null);
   }
 
   // Map. Regions with the same name share one pin (as in the TAREEK web app).
