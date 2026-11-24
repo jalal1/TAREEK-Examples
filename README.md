@@ -1,5 +1,9 @@
 # TAREEK examples
 
+> 🗺️ **Website: [jalal1.github.io/TAREEK-examples](https://jalal1.github.io/TAREEK-examples/)**.
+> A map of all the examples. Click a pin to see the runs of a region, their results,
+> and their full reports. You do not need to download anything.
+
 This repository contains the results of complete [TAREEK](https://github.com/jalal1/TAREEK)
 runs for real regions. Each folder has the configuration of one run, the full
 experiment report, the evaluation figures and data, and a `README.md` that explains the
@@ -11,9 +15,6 @@ example (`README.md`, `config_used.json` and `config.xml`), which stays in TAREE
 [`examples/`](https://github.com/jalal1/TAREEK/tree/main/examples) folder.
 
 ## Examples
-
-**[Map of the examples](https://jalal1.github.io/TAREEK-examples/)**: a pin for each region,
-with the results of each run and a link to its report.
 
 "sim/obs" is the total simulated count divided by the total observed count at the count
 stations (1.0 is a perfect total).
